@@ -31,7 +31,7 @@ html {
   font-size: 16px;
   line-height: 1.5;
   font-family: "HK Grotesk", Helvetica, arial, sans-serif;
-  color: #111;
+  color: #202024;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -181,6 +181,29 @@ a:focus {
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
 */
+.o-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.o-section+.o-section {
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+
+  .o-section--lg+.o-section--lg,
+  .o-section--xl+.o-section--xl {
+    margin-top: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .o-section--xl+.o-section--xl {
+    margin-top: 72px;
+  }
+}
+
 .o-row {
   position: relative;
   padding: 24px 24px 0;
@@ -216,6 +239,16 @@ a:focus {
   width: 100%;
   max-width: 56.4em;
   /* 90 * 20px = 1800 */
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+.o-list {
+  list-style: none;
+  padding: 0;
 }
 
 /*
@@ -337,6 +370,22 @@ a:focus {
     ---
     Website main logo
 */
+.c-header__nav {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .c-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .c-header__nav {
+    display: block;
+  }
+}
+
 .c-logo {
   height: 32px;
 }
@@ -351,6 +400,70 @@ a:focus {
   }
 }
 
+/*
+    Component: Nav
+    ---
+    Main navigation of the site
+*/
+.c-nav {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.c-nav__link {
+  text-decoration: none;
+  font-weight: 400;
+  padding: 8px 0;
+  display: block;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+  color: #202024;
+}
+
+.is-selected .c-nav__link,
+.c-nav__link:hover,
+.c-nav__link:focus {
+  color: #5051db;
+}
+
+@media (min-width: 768px) {
+  .o-row {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .o-row--md {
+    padding-top: 48px;
+    padding-bottom: 24px;
+  }
+
+  .o-row--lg {
+    padding-top: 72px;
+    padding-bottom: 48px;
+  }
+
+  .c-nav__list {
+    display: flex;
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  .c-nav__link {
+    padding: 8px 16px;
+  }
+}
+
+.c-nav--meta {
+  font-size: 16px;
+}
+
+.c-nav_link--meta, .c-nav_link--meta:visited, .c-nav_link--meta:active {
+  color: #6c6c75;
+}
+
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
@@ -359,6 +472,10 @@ a:focus {
     ---
     Utility classes to put specific max widths onto elements
 */
+.u-pt-clear {
+  padding-top: 0 !important;
+}
+
 .u-max-width-xs {
   max-width: 18em !important;
 }
